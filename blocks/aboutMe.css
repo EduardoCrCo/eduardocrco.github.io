@@ -1,0 +1,72 @@
+/* --------------------------------About Me Section-------------------------------- */
+.about-me {
+  padding: 50px 0;
+  background: linear-gradient(135deg, #1a2a3b, #0a1a2b);
+  font-family: "Jost-Light", sans-serif;
+}
+
+.about-me .section__title {
+  text-align: center;
+  font-size: 80px;
+  color: #ffcc00;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.about-me .section__title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, #ffcc00, #ffd633);
+  margin: 16px auto 0;
+  box-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
+}
+
+.about-me__visual {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
+/* .about-me__stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.stat-item {
+  background: rgba(255, 204, 0, 0.1);
+  border: 1px solid rgba(255, 204, 0, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.stat-item:hover {
+  transform: translateY(-4px);
+  border-color: #ffcc00;
+  box-shadow: 0 6px 24px rgba(255, 204, 0, 0.2);
+}
+
+.stat-number {
+  display: block;
+  font-size: 28px;
+  font-weight: bold;
+  color: #ffcc00;
+  font-family: "Jost-SemiBold", sans-serif;
+}
+
+.stat-label {
+  display: block;
+  font-size: 14px;
+  color: #d3d3d3;
+  margin-top: 8px;
+  font-family: "Jost-Regular", sans-serif;
+} */

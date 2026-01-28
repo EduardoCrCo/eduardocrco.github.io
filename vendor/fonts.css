@@ -1,0 +1,47 @@
+@font-face {
+  font-family: "NovaSquare-Regular";
+  src:
+    url(./fonts/NovaSquare-Regular.ttf) format("truetype"),
+    url(./fonts/NovaSquare-Regular.woff) format("woff");
+}
+@font-face {
+  font-family: "Offside-Regular";
+  src:
+    url(./fonts/Offside-Regular.ttf) format("truetype"),
+    url(./fonts/Offside-Regular.woff) format("woff");
+}
+@font-face {
+  font-family: "Jost-SemiBold";
+  src:
+    url(./fonts/Jost-SemiBold.ttf) format("truetype"),
+    url(./fonts/Jost-SemiBold.woff) format("woff");
+}
+@font-face {
+  font-family: "Jost-Light";
+  src:
+    url(./fonts/Jost-Light.ttf) format("truetype"),
+    url(./fonts/Jost-Light.woff) format("woff");
+}
+@font-face {
+  font-family: "Jost-Thin";
+  src:
+    url(./fonts/Jost-Light.ttf) format("truetype"),
+    url(./fonts/Jost-Light.woff) format("woff");
+}
+@font-face {
+  font-family: "Jost-Regular";
+  src:
+    url(./fonts/Jost-Regular.ttf) format("truetype"),
+    url(./fonts/Jost-Regular.woff) format("woff");
+}
+@font-face {
+  font-family: "Michroma-Regular";
+  src:
+    url(./fonts/Michroma-Regular.ttf) format("truetype"),
+    url(./fonts/Michroma-Regular.woff) format("woff");
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url(./fonts/Inter.ttf) format("truetype");
+}

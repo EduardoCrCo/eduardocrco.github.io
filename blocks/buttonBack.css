@@ -1,0 +1,41 @@
+/* Botón de regreso al header */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #f5a623, #f5a623);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 15px rgba(245, 166, 35, 0.3);
+}
+
+.back-to-top:hover {
+  background: linear-gradient(135deg, #e6941f, #e6941f);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(245, 166, 35, 0.4);
+}
+
+.back-to-top:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 15px rgba(245, 166, 35, 0.3);
+}
+
+@media screen and (max-width: 768px) {
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
+  }
+}

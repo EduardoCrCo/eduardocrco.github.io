@@ -1,0 +1,109 @@
+/* --------------------------------------Contact Section---------------------------------------- */
+.contact {
+  padding: 50px 0;
+  background: linear-gradient(135deg, #0a1a2b, #1a2a3b);
+  font-family: "Jost-Light", sans-serif;
+  text-align: center;
+}
+
+.contact .section__title {
+  font-size: 80px;
+  color: #ffcc00;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.contact .section__title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, #ffcc00, #ffd633);
+  margin: 16px auto 0;
+  box-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
+}
+
+.contact__container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.contact__content {
+  background: rgba(255, 204, 0, 0.05);
+  border: 1px solid rgba(255, 204, 0, 0.2);
+  border-radius: 16px;
+  padding: 60px 40px;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.contact__content:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 204, 0, 0.4);
+  box-shadow: 0 12px 48px rgba(255, 204, 0, 0.1);
+}
+
+.contact__subtitle {
+  font-size: 24px;
+  color: #ffcc00;
+  margin-bottom: 30px;
+  font-family: "Jost-SemiBold", sans-serif;
+}
+
+.contact__description {
+  font-size: 18px;
+  color: #d3d3d3;
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.contact__cta {
+  margin-top: 40px;
+}
+
+.contact__email-link {
+  display: inline-block;
+  background: linear-gradient(to right, #ffcc00 0%, #ffcc00 50%, #0a1a2b 50%);
+  background-size: 200% 100%;
+  background-position: 100%;
+  color: #ffcc00;
+  text-decoration: none;
+  padding: 16px 32px;
+  border: 2px solid #ffcc00;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 18px;
+  position: relative;
+  overflow: hidden;
+  transition:
+    background-position 0.4s ease,
+    color 0.4s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.contact__email-link:hover {
+  background-position: 0%;
+  color: #0a1a2b;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(255, 204, 0, 0.3);
+}
+
+.contact__email-text {
+  margin-top: 24px;
+  font-size: 16px;
+  color: #b8b9b6;
+}
+
+.contact__email {
+  color: #ffcc00;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.contact__email:hover {
+  color: #ffd633;
+  text-decoration: underline;
+}

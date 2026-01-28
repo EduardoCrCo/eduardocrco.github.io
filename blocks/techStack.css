@@ -1,0 +1,77 @@
+/* --------------------------------Tech Stack Section-------------------------------- */
+.tech-stack {
+  padding: 50px 0;
+  background: linear-gradient(135deg, #0a1a2b, #1a2a3b);
+  font-family: "Jost-Light", sans-serif;
+}
+
+.tech-stack .section__title {
+  text-align: center;
+  font-size: 80px;
+  color: #ffcc00;
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.tech-stack .section__title::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(to right, #ffcc00, #ffd633);
+  margin: 16px auto 0;
+  box-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
+}
+
+.tech-stack__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tech-stack__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  border-radius: 12px;
+  background: rgba(255, 204, 0, 0.05);
+  border: 1px solid rgba(255, 204, 0, 0.2);
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.tech-stack__item:hover {
+  transform: translateY(-8px);
+  background: rgba(255, 204, 0, 0.1);
+  border-color: #ffcc00;
+  box-shadow: 0 8px 32px rgba(255, 204, 0, 0.2);
+}
+
+.tech-stack__icon {
+  width: 60px;
+  height: 60px;
+  transition: transform 0.3s ease;
+}
+
+.tech-stack__item:hover .tech-stack__icon {
+  transform: scale(1.1);
+}
+
+.tech-stack__name {
+  font-size: 14px;
+  font-weight: 600;
+  color: #d3d3d3;
+  transition: color 0.3s ease;
+}
+
+.tech-stack__item:hover .tech-stack__name {
+  color: #ffcc00;
+}

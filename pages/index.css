@@ -1,0 +1,9 @@
+@import "../vendor/normalize.css";
+@import "../vendor/fonts.css";
+@import "../blocks/projects.css";
+@import "../blocks/header.css";
+@import "../blocks/techStack.css";
+@import "../blocks/aboutMe.css";
+@import "../blocks/contact.css";
+@import "../blocks/footer.css";
+@import "../blocks/buttonBack.css";
