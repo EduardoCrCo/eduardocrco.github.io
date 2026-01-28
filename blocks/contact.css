@@ -73,7 +73,7 @@
   background-position: 100%;
   color: #ffcc00;
   text-decoration: none;
-  padding: 1rem 2rem;
+  padding: 0.875rem 1.5rem;
   border: 2px solid #ffcc00;
   border-radius: 8px;
   font-weight: 400;
@@ -85,8 +85,12 @@
     color 0.4s ease,
     transform 0.3s ease,
     box-shadow 0.3s ease;
-  width: 100%;
-  max-width: 300px;
+  width: calc(100% - 2rem);
+  max-width: 280px;
+  margin: 0 auto;
+  text-align: center;
+  white-space: nowrap;
+  box-sizing: border-box;
 }
 
 .contact__email-link:hover {
@@ -247,5 +251,27 @@
 
   .contact__content {
     padding: 4rem 2.5rem;
+  }
+}
+
+/* ==============================================
+   EXTRA SMALL MOBILE STYLES
+   ============================================== */
+
+@media screen and (max-width: 400px) {
+  .contact__content {
+    padding: 1.5rem 1rem;
+    margin: 0 0.5rem;
+  }
+
+  .contact__email-link {
+    padding: 0.75rem 1rem;
+    width: calc(100% - 1rem);
+    max-width: none;
+    font-size: 0.875rem;
+  }
+
+  .contact__container {
+    padding: 0 0.5rem;
   }
 }
