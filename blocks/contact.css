@@ -1,38 +1,42 @@
-/* --------------------------------------Contact Section---------------------------------------- */
+/* ==============================================
+   CONTACT SECTION - MOBILE FIRST
+   ============================================== */
+
 .contact {
-  padding: 50px 0;
+  padding: var(--section-padding-mobile);
   background: linear-gradient(135deg, #0a1a2b, #1a2a3b);
   font-family: "Jost-Light", sans-serif;
   text-align: center;
 }
 
 .contact .section__title {
-  font-size: 80px;
+  font-size: var(--font-size-h1-mobile);
   color: #ffcc00;
-  margin-bottom: 60px;
+  margin-bottom: 2rem;
   position: relative;
 }
 
 .contact .section__title::after {
   content: "";
   display: block;
-  width: 80px;
-  height: 4px;
+  width: 60px;
+  height: 3px;
   background: linear-gradient(to right, #ffcc00, #ffd633);
-  margin: 16px auto 0;
+  margin: 1rem auto 0;
   box-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
 }
 
 .contact__container {
-  max-width: 800px;
+  max-width: var(--container-max-width);
   margin: 0 auto;
+  padding: 0 var(--container-padding-mobile);
 }
 
 .contact__content {
   background: rgba(255, 204, 0, 0.05);
   border: 1px solid rgba(255, 204, 0, 0.2);
   border-radius: 16px;
-  padding: 60px 40px;
+  padding: 2rem 1.5rem;
   transition:
     transform 0.3s ease,
     border-color 0.3s ease;
@@ -41,25 +45,25 @@
 .contact__content:hover {
   transform: translateY(-4px);
   border-color: rgba(255, 204, 0, 0.4);
-  box-shadow: 0 12px 48px rgba(255, 204, 0, 0.1);
+  box-shadow: 0 8px 32px rgba(255, 204, 0, 0.1);
 }
 
 .contact__subtitle {
-  font-size: 24px;
+  font-size: var(--font-size-h2-mobile);
   color: #ffcc00;
-  margin-bottom: 30px;
+  margin-bottom: 1.5rem;
   font-family: "Jost-SemiBold", sans-serif;
 }
 
 .contact__description {
-  font-size: 18px;
+  font-size: var(--font-size-body-mobile);
   color: #d3d3d3;
   line-height: 1.6;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 }
 
 .contact__cta {
-  margin-top: 40px;
+  margin-top: 2rem;
 }
 
 .contact__email-link {
@@ -69,11 +73,11 @@
   background-position: 100%;
   color: #ffcc00;
   text-decoration: none;
-  padding: 16px 32px;
+  padding: 1rem 2rem;
   border: 2px solid #ffcc00;
   border-radius: 8px;
   font-weight: 400;
-  font-size: 18px;
+  font-size: var(--font-size-body-mobile);
   position: relative;
   overflow: hidden;
   transition:
@@ -81,18 +85,20 @@
     color 0.4s ease,
     transform 0.3s ease,
     box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 300px;
 }
 
 .contact__email-link:hover {
   background-position: 0%;
   color: #0a1a2b;
   transform: translateY(-2px);
-  box-shadow: 0 6px 24px rgba(255, 204, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(255, 204, 0, 0.3);
 }
 
 .contact__email-text {
-  margin-top: 24px;
-  font-size: 16px;
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
   color: #b8b9b6;
 }
 
@@ -106,4 +112,140 @@
 .contact__email:hover {
   color: #ffd633;
   text-decoration: underline;
+}
+
+/* ==============================================
+   TABLET STYLES
+   ============================================== */
+
+@media screen and (min-width: 768px) {
+  .contact {
+    padding: var(--section-padding-tablet);
+  }
+
+  .contact .section__title {
+    font-size: var(--font-size-h1-tablet);
+    margin-bottom: 3rem;
+  }
+
+  .contact .section__title::after {
+    width: 80px;
+    height: 4px;
+  }
+
+  .contact__container {
+    max-width: 800px;
+    padding: 0 var(--container-padding-tablet);
+  }
+
+  .contact__content {
+    padding: 3rem 2.5rem;
+  }
+
+  .contact__content:hover {
+    box-shadow: 0 10px 40px rgba(255, 204, 0, 0.1);
+  }
+
+  .contact__subtitle {
+    font-size: var(--font-size-h2-tablet);
+    margin-bottom: 2rem;
+  }
+
+  .contact__description {
+    font-size: var(--font-size-body-tablet);
+    margin-bottom: 1.5rem;
+  }
+
+  .contact__cta {
+    margin-top: 2.5rem;
+  }
+
+  .contact__email-link {
+    padding: 1rem 2rem;
+    font-size: var(--font-size-body-tablet);
+    width: auto;
+    max-width: none;
+  }
+
+  .contact__email-link:hover {
+    box-shadow: 0 6px 24px rgba(255, 204, 0, 0.3);
+  }
+
+  .contact__email-text {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* ==============================================
+   DESKTOP STYLES
+   ============================================== */
+
+@media screen and (min-width: 1024px) {
+  .contact {
+    padding: var(--section-padding-desktop);
+  }
+
+  .contact .section__title {
+    font-size: var(--font-size-h1-desktop);
+    margin-bottom: 4rem;
+  }
+
+  .contact__container {
+    padding: 0 var(--container-padding-desktop);
+  }
+
+  .contact__content {
+    padding: 4rem 2.5rem;
+  }
+
+  .contact__content:hover {
+    box-shadow: 0 12px 48px rgba(255, 204, 0, 0.1);
+  }
+
+  .contact__subtitle {
+    font-size: var(--font-size-h2-desktop);
+    margin-bottom: 2rem;
+  }
+
+  .contact__description {
+    font-size: var(--font-size-body-desktop);
+    margin-bottom: 1.5rem;
+  }
+
+  .contact__cta {
+    margin-top: 2.5rem;
+  }
+
+  .contact__email-link {
+    padding: 1rem 2rem;
+    font-size: 18px;
+  }
+
+  .contact__email-text {
+    margin-top: 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+/* ==============================================
+   LARGE DESKTOP STYLES
+   ============================================== */
+
+@media screen and (min-width: 1440px) {
+  .contact .section__title {
+    font-size: 80px;
+  }
+
+  .contact__subtitle {
+    font-size: 24px;
+  }
+
+  .contact__description {
+    font-size: 18px;
+  }
+
+  .contact__content {
+    padding: 4rem 2.5rem;
+  }
 }

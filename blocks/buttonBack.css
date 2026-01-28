@@ -1,15 +1,18 @@
-/* Botón de regreso al header */
+/* ==============================================
+   BACK TO TOP BUTTON - RESPONSIVE
+   ============================================== */
+
 .back-to-top {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
+  bottom: 1rem;
+  right: 1rem;
+  width: 45px;
+  height: 45px;
   background: linear-gradient(135deg, #f5a623, #f5a623);
   color: white;
   border: none;
   border-radius: 50%;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
   opacity: 0;
@@ -17,6 +20,10 @@
   transition: all 0.3s ease;
   z-index: 1000;
   box-shadow: 0 4px 15px rgba(245, 166, 35, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
 }
 
 .back-to-top:hover {
@@ -30,12 +37,34 @@
   box-shadow: 0 4px 15px rgba(245, 166, 35, 0.3);
 }
 
-@media screen and (max-width: 768px) {
+/* ==============================================
+   TABLET STYLES
+   ============================================== */
+
+@media screen and (min-width: 768px) {
   .back-to-top {
-    bottom: 20px;
-    right: 20px;
-    width: 45px;
-    height: 45px;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 50px;
+    height: 50px;
     font-size: 18px;
+  }
+}
+
+/* ==============================================
+   DESKTOP STYLES
+   ============================================== */
+
+@media screen and (min-width: 1024px) {
+  .back-to-top {
+    bottom: 2rem;
+    right: 2rem;
+    width: 55px;
+    height: 55px;
+    font-size: 20px;
+  }
+
+  .back-to-top:hover {
+    transform: translateY(-3px);
   }
 }

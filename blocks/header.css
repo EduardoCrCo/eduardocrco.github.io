@@ -1,68 +1,62 @@
-:root {
-  --container-max-width: 1440px;
-}
+/* ==============================================
+   HEADER STYLES - MOBILE FIRST
+   ============================================== */
 
 .page {
   max-width: var(--container-max-width);
-  /* También puedes agregar otras propiedades comunes para contenedores */
   margin: 0 auto;
-  /* padding: 0 20px; */
+  padding: 0 var(--container-padding-mobile);
 }
 
 .header {
-  /* background: #053769;
-  padding: 20px;
-  text-align: center;
-  height: 100vh; */
   height: 100vh;
   background:
-    /* linear-gradient(
-      rgb(2, 35, 126, 1),
-      rgba(0, 0, 0, 0.3),
-      rgba(2, 35, 126, 0.9)
-    ), */
-    linear-gradient(rgb(0, 0, 0), rgba(0, 0, 0, 0.3), rgba(0, 0, 2, 0.9)),
+    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3), rgba(0, 0, 2, 0.9)),
     url("../images/pruebasPortafolio3.jpg");
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
-  font-size: var(--font-size-normal);
+  background-attachment: scroll; /* Fixed puede causar problemas en móvil */
+  position: relative;
 }
 
 .header__container {
   max-width: var(--container-max-width);
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   height: 100%;
-  /* background-color: rgba(0, 0, 0, 0.4); */
+  padding: 1rem;
+  position: relative;
 }
 
 .header__logo-image {
-  color: #b8b9b6;
-  font-size: 24px;
-  font-weight: bold;
-  width: 350px;
-  padding-left: 40px;
+  width: 200px;
+  height: auto;
+  margin: 1rem 0;
+}
+
+/* Mobile Navigation */
+.header__nav {
+  width: 100%;
+  margin: 1rem 0;
 }
 
 .header__nav-list {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
-  gap: 40px;
-  text-decoration: none;
+  flex-direction: column;
+  gap: 1rem;
   list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
 .header__nav-link {
   color: #b8b9b6;
   text-decoration: none;
   font-weight: 500;
-  font-size: 18px;
+  font-size: var(--font-size-body-mobile);
   position: relative;
   overflow: hidden;
   background: linear-gradient(to right, #ffcc00 0%, #ffcc00 50%, #b8b9b6 50%);
@@ -74,18 +68,22 @@
   transition:
     background-position 0.4s ease,
     text-shadow 0.4s ease;
+  padding: 0.5rem 1rem;
+  display: block;
 }
 
 .header__nav-link::after {
   content: "";
   position: absolute;
-  bottom: -2px;
-  left: 0;
+  bottom: 0;
+  left: 50%;
   width: 0;
   height: 2px;
   background: linear-gradient(to right, #ffcc00, #ffd633);
   box-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
-  transition: width 0.4s ease;
+  transition:
+    width 0.4s ease,
+    left 0.4s ease;
 }
 
 .header__nav-link:hover {
@@ -97,49 +95,165 @@
 
 .header__nav-link:hover::after {
   width: 100%;
+  left: 0;
 }
 
 .header__text {
-  position: absolute;
-  top: 50%;
-  font-size: 24px;
-  text-align: left;
+  text-align: center;
   color: #b8b9b6;
-  transform: translateY(-50%);
-  padding-left: 40px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  margin-bottom: 2rem;
 }
 
 .header__title {
   color: #d3d3d3;
-
-  margin: 0;
+  margin: 0 0 1rem 0;
 }
+
 .header__title-span {
-  /* color: #1245a8; */
   color: #ffcc00;
-  color: #110000;
-  font-size: 100px;
-  /* font-weight: bold; */
+  font-size: var(--font-size-h1-mobile);
   font-family: "Jost-Regular", cursive;
   transition: transform 0.4s ease;
-  transform-origin: left;
+  transform-origin: center;
   display: inline-block;
 }
+
 .header__title-span:hover {
-  transform: scale(1.2);
-  display: inline-block;
+  transform: scale(1.1);
   text-shadow: 0 0 1px #ffcc00;
 }
 
 .header__paragraph {
-  font-size: 20px;
-  margin-top: 10px;
+  font-size: var(--font-size-body-mobile);
+  margin-top: 1rem;
   font-family: "Jost-Regular", sans-serif;
-  font-size: 24px;
   color: #d3d3d3;
+  line-height: 1.6;
 }
+
 .header__paragraph-span {
   color: #ffcc00;
   font-weight: 600;
   font-family: "Offside-Regular", cursive;
+}
+
+/* ==============================================
+   TABLET STYLES
+   ============================================== */
+
+@media screen and (min-width: 768px) {
+  .page {
+    padding: 0 var(--container-padding-tablet);
+  }
+
+  .header {
+    background-attachment: fixed; /* Restauramos fixed para tablet/desktop */
+  }
+
+  .header__container {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 2rem;
+  }
+
+  .header__logo-image {
+    width: 250px;
+    margin: 0;
+  }
+
+  .header__nav {
+    width: auto;
+    margin: 0;
+  }
+
+  .header__nav-list {
+    flex-direction: row;
+    gap: 2rem;
+  }
+
+  .header__nav-link {
+    font-size: var(--font-size-body-tablet);
+    padding: 0.5rem 0;
+  }
+
+  .header__text {
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    transform: translateY(-50%);
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    max-width: 60%;
+  }
+
+  .header__title-span {
+    font-size: var(--font-size-h1-tablet);
+  }
+
+  .header__paragraph {
+    font-size: var(--font-size-body-tablet);
+    margin-top: 1rem;
+  }
+}
+
+/* ==============================================
+   DESKTOP STYLES
+   ============================================== */
+
+@media screen and (min-width: 1024px) {
+  .page {
+    padding: 0 var(--container-padding-desktop);
+  }
+
+  .header__container {
+    padding: 2rem 0;
+  }
+
+  .header__logo-image {
+    width: 350px;
+    padding-left: 40px;
+  }
+
+  .header__nav-list {
+    gap: 2.5rem;
+  }
+
+  .header__nav-link {
+    font-size: 18px;
+    padding: 0;
+  }
+
+  .header__text {
+    left: 40px;
+    max-width: 50%;
+  }
+
+  .header__title-span {
+    font-size: var(--font-size-h1-desktop);
+  }
+
+  .header__title-span:hover {
+    transform: scale(1.2);
+  }
+
+  .header__paragraph {
+    font-size: 24px;
+    margin-top: 10px;
+  }
+}
+
+/* ==============================================
+   LARGE DESKTOP STYLES
+   ============================================== */
+
+@media screen and (min-width: 1440px) {
+  .header__title-span {
+    font-size: 100px;
+  }
 }

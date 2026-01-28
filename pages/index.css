@@ -1,5 +1,6 @@
 @import "../vendor/normalize.css";
 @import "../vendor/fonts.css";
+@import "../blocks/responsive.css";
 @import "../blocks/projects.css";
 @import "../blocks/header.css";
 @import "../blocks/techStack.css";

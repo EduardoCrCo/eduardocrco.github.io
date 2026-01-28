@@ -1,0 +1,113 @@
+/* ==============================================
+   RESPONSIVE DESIGN VARIABLES & BREAKPOINTS
+   ============================================== */
+
+:root {
+  /* Container max widths */
+  --container-max-width: 1440px;
+  --container-padding-mobile: 16px;
+  --container-padding-tablet: 24px;
+  --container-padding-desktop: 40px;
+
+  /* Breakpoints */
+  --mobile-max: 767px;
+  --tablet-min: 768px;
+  --tablet-max: 1023px;
+  --desktop-min: 1024px;
+  --desktop-large-min: 1440px;
+
+  /* Typography responsive */
+  --font-size-h1-mobile: 2rem;
+  --font-size-h1-tablet: 2.5rem;
+  --font-size-h1-desktop: 3rem;
+
+  --font-size-h2-mobile: 1.5rem;
+  --font-size-h2-tablet: 1.875rem;
+  --font-size-h2-desktop: 2.25rem;
+
+  --font-size-body-mobile: 0.875rem;
+  --font-size-body-tablet: 1rem;
+  --font-size-body-desktop: 1rem;
+
+  /* Spacing responsive */
+  --section-padding-mobile: 2rem 0;
+  --section-padding-tablet: 3rem 0;
+  --section-padding-desktop: 4rem 0;
+
+  /* Grid gaps */
+  --grid-gap-mobile: 1rem;
+  --grid-gap-tablet: 1.5rem;
+  --grid-gap-desktop: 2rem;
+}
+
+/* ==============================================
+   UTILITY CLASSES FOR RESPONSIVE
+   ============================================== */
+
+.container {
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding-mobile);
+}
+
+/* Hide/Show elements by screen size */
+.hide-mobile {
+  display: none;
+}
+
+.hide-tablet {
+  display: block;
+}
+
+.hide-desktop {
+  display: block;
+}
+
+/* ==============================================
+   MEDIA QUERIES
+   ============================================== */
+
+/* Tablet */
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 0 var(--container-padding-tablet);
+  }
+
+  .hide-mobile {
+    display: block;
+  }
+
+  .hide-tablet {
+    display: none;
+  }
+
+  .hide-desktop {
+    display: block;
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 1024px) {
+  .container {
+    padding: 0 var(--container-padding-desktop);
+  }
+
+  .hide-mobile {
+    display: block;
+  }
+
+  .hide-tablet {
+    display: block;
+  }
+
+  .hide-desktop {
+    display: none;
+  }
+}
+
+/* Large Desktop */
+@media screen and (min-width: 1440px) {
+  .container {
+    padding: 0 var(--container-padding-desktop);
+  }
+}

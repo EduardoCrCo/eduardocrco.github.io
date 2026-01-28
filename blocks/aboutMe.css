@@ -1,72 +1,92 @@
-/* --------------------------------About Me Section-------------------------------- */
+/* ==============================================
+   ABOUT ME SECTION - MOBILE FIRST
+   ============================================== */
+
 .about-me {
-  padding: 50px 0;
+  padding: var(--section-padding-mobile);
   background: linear-gradient(135deg, #1a2a3b, #0a1a2b);
   font-family: "Jost-Light", sans-serif;
 }
 
 .about-me .section__title {
   text-align: center;
-  font-size: 80px;
+  font-size: var(--font-size-h1-mobile);
   color: #ffcc00;
-  margin-bottom: 60px;
+  margin-bottom: 2rem;
   position: relative;
 }
 
 .about-me .section__title::after {
   content: "";
   display: block;
-  width: 80px;
-  height: 4px;
+  width: 60px;
+  height: 3px;
   background: linear-gradient(to right, #ffcc00, #ffd633);
-  margin: 16px auto 0;
+  margin: 1rem auto 0;
   box-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
 }
 
 .about-me__visual {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 1.5rem;
   align-items: center;
+  max-width: var(--container-max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding-mobile);
 }
 
-/* .about-me__stats {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-  width: 100%;
-  max-width: 300px;
+/* ==============================================
+   TABLET STYLES
+   ============================================== */
+
+@media screen and (min-width: 768px) {
+  .about-me {
+    padding: var(--section-padding-tablet);
+  }
+
+  .about-me .section__title {
+    font-size: var(--font-size-h1-tablet);
+    margin-bottom: 3rem;
+  }
+
+  .about-me .section__title::after {
+    width: 80px;
+    height: 4px;
+  }
+
+  .about-me__visual {
+    gap: 2rem;
+    padding: 0 var(--container-padding-tablet);
+  }
 }
 
-.stat-item {
-  background: rgba(255, 204, 0, 0.1);
-  border: 1px solid rgba(255, 204, 0, 0.3);
-  border-radius: 12px;
-  padding: 20px;
-  text-align: center;
-  transition:
-    transform 0.3s ease,
-    border-color 0.3s ease;
+/* ==============================================
+   DESKTOP STYLES
+   ============================================== */
+
+@media screen and (min-width: 1024px) {
+  .about-me {
+    padding: var(--section-padding-desktop);
+  }
+
+  .about-me .section__title {
+    font-size: var(--font-size-h1-desktop);
+    margin-bottom: 4rem;
+  }
+
+  .about-me__visual {
+    gap: 2.5rem;
+    padding: 0 var(--container-padding-desktop);
+  }
 }
 
-.stat-item:hover {
-  transform: translateY(-4px);
-  border-color: #ffcc00;
-  box-shadow: 0 6px 24px rgba(255, 204, 0, 0.2);
-}
+/* ==============================================
+   LARGE DESKTOP STYLES
+   ============================================== */
 
-.stat-number {
-  display: block;
-  font-size: 28px;
-  font-weight: bold;
-  color: #ffcc00;
-  font-family: "Jost-SemiBold", sans-serif;
+@media screen and (min-width: 1440px) {
+  .about-me .section__title {
+    font-size: 80px;
+  }
 }
-
-.stat-label {
-  display: block;
-  font-size: 14px;
-  color: #d3d3d3;
-  margin-top: 8px;
-  font-family: "Jost-Regular", sans-serif;
-} */
