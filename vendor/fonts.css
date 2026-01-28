@@ -5,10 +5,10 @@
     url(./fonts/NovaSquare-Regular.woff) format("woff");
 }
 @font-face {
-  font-family: "Offside-Regular";
+  font-family: "Jost-Bold";
   src:
-    url(./fonts/Offside-Regular.ttf) format("truetype"),
-    url(./fonts/Offside-Regular.woff) format("woff");
+    url(./fonts/Jost-Bold.ttf) format("truetype"),
+    url(./fonts/Jost-Bold.woff) format("woff");
 }
 @font-face {
   font-family: "Jost-SemiBold";
