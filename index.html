@@ -435,27 +435,7 @@
       ↑
     </button>
 
-    <script>
-      // Función para hacer scroll al header
-      function scrollToTop() {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      }
-
-      // Mostrar/ocultar el botón basado en la posición del scroll
-      window.addEventListener('scroll', function() {
-        const backToTopButton = document.getElementById('backToTop');
-        if (window.scrollY > 300) {
-          backToTopButton.style.opacity = '1';
-          backToTopButton.style.visibility = 'visible';
-        } else {
-          backToTopButton.style.opacity = '0';
-          backToTopButton.style.visibility = 'hidden';
-        }
-      });
-    </script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>
 
