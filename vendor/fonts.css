@@ -40,6 +40,12 @@
     url(./fonts/Michroma-Regular.ttf) format("truetype"),
     url(./fonts/Michroma-Regular.woff) format("woff");
 }
+@font-face {
+  font-family: "Offside-Regular";
+  src:
+    url(./fonts/Offside-Regular.ttf) format("truetype"),
+    url(./fonts/Offside-Regular.woff) format("woff");
+}
 
 @font-face {
   font-family: "Inter";
