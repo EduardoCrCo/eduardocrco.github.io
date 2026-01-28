@@ -11,7 +11,7 @@
 .header {
   height: 100vh;
   background:
-    linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3), rgba(0, 0, 2, 0.9)),
+    linear-gradient(rgba(0, 0, 2, 1), rgba(0, 0, 2, 0.4), rgba(0, 0, 2, 0.9)),
     url("../images/pruebasPortafolio3.jpg");
   background-size: cover;
   background-position: center;
@@ -240,7 +240,7 @@
   }
 
   .header__title-span:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 
   .header__paragraph {
