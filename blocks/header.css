@@ -15,8 +15,12 @@
     url("../images/pruebasPortafolio3.jpg");
   background-size: cover;
   background-position: center;
-  background-attachment: scroll; /* Fixed puede causar problemas en móvil */
+  background-attachment: fixed; /* Efecto parallax activado */
+  background-repeat: no-repeat;
   position: relative;
+  /* Optimización para parallax */
+  will-change: background-size;
+  transition: background-size 0.1s ease-out;
 }
 
 .header__container {
@@ -28,6 +32,8 @@
   height: 100%;
   padding: 1rem;
   position: relative;
+  /* Asegurar que el contenido se mantenga dentro */
+  overflow: hidden;
 }
 
 .header__logo-image {
@@ -107,6 +113,9 @@
   justify-content: center;
   padding: 1rem var(--container-padding-mobile);
   margin-bottom: 2rem;
+  /* Preparar para efectos de parallax */
+  will-change: transform, opacity;
+  transition: opacity 0.3s ease-out;
 }
 
 .header__title {
@@ -210,6 +219,11 @@
 @media screen and (min-width: 1024px) {
   .page {
     padding: 0 var(--container-padding-desktop);
+  }
+
+  .header {
+    /* Mantener parallax en desktop para mejor performance */
+    background-attachment: fixed;
   }
 
   .header__container {
