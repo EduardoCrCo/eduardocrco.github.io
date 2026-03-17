@@ -22,23 +22,48 @@ function initParallaxEffect() {
 
   if (!header || !headerText) return;
 
+  // Guardar las transformaciones CSS originales
+  const originalTransform = window.getComputedStyle(headerText).transform;
+  const hasOriginalTransform = originalTransform && originalTransform !== 'none';
+
   window.addEventListener("scroll", function () {
     const scrolled = window.pageYOffset;
     const headerHeight = header.offsetHeight;
 
     // Solo aplicar efectos mientras el header esté visible
     if (scrolled < headerHeight) {
-      // Efecto parallax más sutil para el texto (menos movimiento)
-      const rate = scrolled * -0.2; // Reducido de -0.5 a -0.2
-      const opacity = 1 - (scrolled / headerHeight) * 3; // Fade más gradual
+      // Considerar que está en el top si el scroll es muy pequeño (menos de 5 píxeles)
+      if (scrolled <= 5) {
+        // Restaurar valores originales cuando estamos en el top
+        if (hasOriginalTransform) {
+          headerText.style.transform = originalTransform; // Mantener transform CSS original
+        } else {
+          headerText.style.transform = ""; // Sin transform en móvil
+        }
+        headerText.style.opacity = "";
+        header.style.backgroundSize = ""; // Restaurar CSS original
+      } else {
+        // Efecto parallax más sutil para el texto (menos movimiento)
+        const rate = scrolled * -0.2;
+        const opacity = 1 - (scrolled / headerHeight) * 3;
 
-      // Aplicar transformaciones más conservadoras
-      headerText.style.transform = `translate3d(0, ${Math.max(rate, -50)}px, 0)`; // Limitar movimiento
-      headerText.style.opacity = Math.max(opacity, 0.2); // Mantener algo de opacidad
+        // Combinar transformación original con efecto parallax
+        let combinedTransform;
+        if (hasOriginalTransform && originalTransform.includes('translateY')) {
+          // Si ya tiene translateY, combinar con el movimiento parallax
+          combinedTransform = `${originalTransform} translate3d(0, ${Math.max(rate, -50)}px, 0)`;
+        } else {
+          // Solo aplicar parallax
+          combinedTransform = `translate3d(0, ${Math.max(rate, -50)}px, 0)`;
+        }
 
-      // Efecto zoom muy sutil en el fondo
-      const zoom = 1.25 + scrolled * 0.001; // Reducido de 0.0005 a 0.0002
-      header.style.backgroundSize = `${Math.min(zoom * 100, 500)}%`; // Limitar zoom máximo
+        headerText.style.transform = combinedTransform;
+        headerText.style.opacity = Math.max(opacity, 0.2);
+
+        // Efecto zoom muy sutil en el fondo - empieza desde 100%
+        const zoom = 1 + scrolled * 0.001;
+        header.style.backgroundSize = `${Math.min(zoom * 100, 500)}%`;
+      }
     }
   });
 }
@@ -55,7 +80,37 @@ window.addEventListener("scroll", function () {
   }
 });
 
+// Función para agregar scroll suave a todos los enlaces de navegación
+function initSmoothScrolling() {
+  // Seleccionar todos los enlaces de navegación
+  const navLinks = document.querySelectorAll(".header__nav-link");
+
+  navLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault(); // Prevenir comportamiento por defecto del enlace
+
+      // Obtener el href (ej: "#projects", "#tech__stack", etc.)
+      const targetId = this.getAttribute("href");
+
+      // Buscar el elemento con ese ID
+      const targetSection = document.querySelector(targetId);
+
+      if (targetSection) {
+        // Hacer scroll suave a la sección
+        targetSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+
+        // Opcional: Actualizar la URL sin hacer jump
+        history.pushState(null, null, targetId);
+      }
+    });
+  });
+}
+
 // Inicializar efectos cuando se carga la página
 document.addEventListener("DOMContentLoaded", function () {
   initParallaxEffect();
+  initSmoothScrolling(); // Inicializar scroll suave
 });

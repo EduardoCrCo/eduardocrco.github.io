@@ -250,7 +250,7 @@
   }
 
   .single-project__link-site {
-    width: auto;
+    width: fit-content;
     max-width: none;
   }
 
