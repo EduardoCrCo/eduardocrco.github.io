@@ -1,12 +1,17 @@
 // Función para hacer scroll al header
 function scrollToTop() {
-  // Remover el hash de la URL
-  if (window.location.hash) {
-    history.pushState(
-      null,
-      null,
-      window.location.pathname + window.location.search,
-    );
+  // Remover el hash de la URL de manera más segura para GitHub Pages
+  try {
+    if (window.location.hash) {
+      history.replaceState(
+        null,
+        null,
+        window.location.pathname + window.location.search,
+      );
+    }
+  } catch (e) {
+    // Fallback si hay problemas con history API en GitHub Pages
+    console.log("History API not available");
   }
 
   window.scrollTo({
@@ -68,19 +73,21 @@ function initParallaxEffect() {
   });
 }
 
-// Mostrar/ocultar el botón basado en la posición del scroll
+// Mostrar/ocultar el botón basado en la posición del scroll (compatible con GitHub Pages)
 window.addEventListener("scroll", function () {
   const backToTopButton = document.getElementById("backToTop");
-  if (window.scrollY > 300) {
-    backToTopButton.style.opacity = "1";
-    backToTopButton.style.visibility = "visible";
-  } else {
-    backToTopButton.style.opacity = "0";
-    backToTopButton.style.visibility = "hidden";
+  if (backToTopButton) { // Verificar que el elemento existe
+    if (window.scrollY > 300) {
+      backToTopButton.style.opacity = "1";
+      backToTopButton.style.visibility = "visible";
+    } else {
+      backToTopButton.style.opacity = "0";
+      backToTopButton.style.visibility = "hidden";
+    }
   }
 });
 
-// Función para agregar scroll suave a todos los enlaces de navegación
+// Función para agregar scroll suave a todos los enlaces de navegación (compatible con GitHub Pages)
 function initSmoothScrolling() {
   // Seleccionar todos los enlaces de navegación
   const navLinks = document.querySelectorAll(".header__nav-link");
@@ -96,21 +103,75 @@ function initSmoothScrolling() {
       const targetSection = document.querySelector(targetId);
 
       if (targetSection) {
-        // Hacer scroll suave a la sección
-        targetSection.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
+        // Calcular la posición del elemento
+        const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset;
+        
+        // Verificar si el navegador soporta smooth scrolling
+        if ('scrollBehavior' in document.documentElement.style) {
+          // Usar scrollIntoView si está soportado
+          targetSection.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        } else {
+          // Fallback: scroll manual suave para navegadores que no lo soporten
+          smoothScrollTo(targetPosition, 800);
+        }
 
-        // Opcional: Actualizar la URL sin hacer jump
-        history.pushState(null, null, targetId);
+        // Actualizar la URL de manera más segura para GitHub Pages
+        try {
+          if (history.replaceState) {
+            history.replaceState(null, null, targetId);
+          } else {
+            window.location.hash = targetId;
+          }
+        } catch (e) {
+          // Si falla, al menos intentar cambiar el hash
+          window.location.hash = targetId;
+        }
       }
     });
   });
 }
 
-// Inicializar efectos cuando se carga la página
+// Función de fallback para smooth scroll manual
+function smoothScrollTo(targetPosition, duration) {
+  const startPosition = window.pageYOffset;
+  const distance = targetPosition - startPosition;
+  let startTime = null;
+
+  function animation(currentTime) {
+    if (startTime === null) startTime = currentTime;
+    const timeElapsed = currentTime - startTime;
+    const run = ease(timeElapsed, startPosition, distance, duration);
+    window.scrollTo(0, run);
+    if (timeElapsed < duration) requestAnimationFrame(animation);
+  }
+
+  function ease(t, b, c, d) {
+    t /= d / 2;
+    if (t < 1) return c / 2 * t * t + b;
+    t--;
+    return -c / 2 * (t * (t - 2) - 1) + b;
+  }
+
+  requestAnimationFrame(animation);
+}
+
+// Inicializar efectos cuando se carga la página (compatible con GitHub Pages)
 document.addEventListener("DOMContentLoaded", function () {
-  initParallaxEffect();
-  initSmoothScrolling(); // Inicializar scroll suave
+  // Pequeño delay para asegurar que todos los elementos estén cargados en GitHub Pages
+  setTimeout(function() {
+    initParallaxEffect();
+    initSmoothScrolling();
+    
+    // Debug para GitHub Pages - verificar que los elementos existan
+    console.log("Navigation links found:", document.querySelectorAll(".header__nav-link").length);
+    console.log("Sections found:", {
+      projects: !!document.querySelector("#projects"),
+      techStack: !!document.querySelector("#tech__stack"),
+      aboutMe: !!document.querySelector("#about__me"),
+      contact: !!document.querySelector("#contact")
+    });
+  }, 100);
 });
