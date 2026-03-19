@@ -29,7 +29,8 @@ function initParallaxEffect() {
 
   // Guardar las transformaciones CSS originales
   const originalTransform = window.getComputedStyle(headerText).transform;
-  const hasOriginalTransform = originalTransform && originalTransform !== 'none';
+  const hasOriginalTransform =
+    originalTransform && originalTransform !== "none";
 
   window.addEventListener("scroll", function () {
     const scrolled = window.pageYOffset;
@@ -54,7 +55,7 @@ function initParallaxEffect() {
 
         // Combinar transformación original con efecto parallax
         let combinedTransform;
-        if (hasOriginalTransform && originalTransform.includes('translateY')) {
+        if (hasOriginalTransform && originalTransform.includes("translateY")) {
           // Si ya tiene translateY, combinar con el movimiento parallax
           combinedTransform = `${originalTransform} translate3d(0, ${Math.max(rate, -50)}px, 0)`;
         } else {
@@ -76,7 +77,8 @@ function initParallaxEffect() {
 // Mostrar/ocultar el botón basado en la posición del scroll (compatible con GitHub Pages)
 window.addEventListener("scroll", function () {
   const backToTopButton = document.getElementById("backToTop");
-  if (backToTopButton) { // Verificar que el elemento existe
+  if (backToTopButton) {
+    // Verificar que el elemento existe
     if (window.scrollY > 300) {
       backToTopButton.style.opacity = "1";
       backToTopButton.style.visibility = "visible";
@@ -104,10 +106,11 @@ function initSmoothScrolling() {
 
       if (targetSection) {
         // Calcular la posición del elemento
-        const targetPosition = targetSection.getBoundingClientRect().top + window.pageYOffset;
-        
+        const targetPosition =
+          targetSection.getBoundingClientRect().top + window.pageYOffset;
+
         // Verificar si el navegador soporta smooth scrolling
-        if ('scrollBehavior' in document.documentElement.style) {
+        if ("scrollBehavior" in document.documentElement.style) {
           // Usar scrollIntoView si está soportado
           targetSection.scrollIntoView({
             behavior: "smooth",
@@ -150,28 +153,147 @@ function smoothScrollTo(targetPosition, duration) {
 
   function ease(t, b, c, d) {
     t /= d / 2;
-    if (t < 1) return c / 2 * t * t + b;
+    if (t < 1) return (c / 2) * t * t + b;
     t--;
-    return -c / 2 * (t * (t - 2) - 1) + b;
+    return (-c / 2) * (t * (t - 2) - 1) + b;
   }
 
   requestAnimationFrame(animation);
 }
 
+// Inicializar carrusel infinito real
+function initCarousel() {
+  let currentSlide = 1; // Empezar en el primer slide real (índice 1)
+  const totalSlides = 7; // Número de slides originales
+  const indicators = document.querySelectorAll(".indicator");
+  const track = document.querySelector(".carousel-track");
+
+  if (!track || indicators.length === 0) return;
+
+  function updateCarousel(withTransition = true) {
+    // Posición basada en el índice actual del slide
+    const translateX = -(currentSlide * 11.111); // 100% / 9 slides = 11.111%
+
+    if (!withTransition) {
+      track.classList.add("no-animation");
+    } else {
+      track.classList.remove("no-animation");
+    }
+
+    track.style.transform = `translateX(${translateX}%)`;
+
+    if (!withTransition) {
+      // Forzar repaint del navegador
+      track.offsetHeight;
+    }
+
+    // Actualizar indicadores (convertir índice real a lógico)
+    const logicalSlide =
+      currentSlide === 0
+        ? totalSlides - 1
+        : currentSlide === totalSlides + 1
+          ? 0
+          : currentSlide - 1;
+    indicators.forEach((indicator, index) => {
+      indicator.classList.toggle("active", index === logicalSlide);
+    });
+  }
+
+  function nextSlide() {
+    currentSlide++;
+    updateCarousel(true);
+
+    // Verificar si llegamos al slide clonado del final
+    if (currentSlide === totalSlides + 1) {
+      // Posición 8 (el clone del final)
+      // Después de que la animación termine, saltar al slide real idéntico
+      setTimeout(() => {
+        currentSlide = 1; // Primer slide real
+        updateCarousel(false);
+      }, 800); // Coincide con la duración de la transición CSS
+    }
+  }
+
+  function prevSlide() {
+    currentSlide--;
+    updateCarousel(true);
+
+    // Verificar si llegamos al slide clonado del inicio
+    if (currentSlide === 0) {
+      setTimeout(() => {
+        currentSlide = totalSlides; // Último slide real (posición 7)
+        updateCarousel(false);
+      }, 800);
+    }
+  }
+
+  function goToSlide(slideIndex) {
+    // Convertir índice lógico (0-6) a índice real (1-7)
+    currentSlide = slideIndex + 1;
+    updateCarousel(true);
+  }
+
+  // Auto-deslizar cada 4 segundos
+  let autoSlideInterval = setInterval(nextSlide, 4000);
+
+  // Manejar clics en indicadores
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener("click", () => {
+      goToSlide(index);
+
+      // Reiniciar el auto-deslizar
+      clearInterval(autoSlideInterval);
+      autoSlideInterval = setInterval(nextSlide, 4000);
+    });
+  });
+
+  // Pausar auto-deslizar cuando el mouse está sobre el carrusel
+  const carouselContainer = document.querySelector(".carousel-container");
+  if (carouselContainer) {
+    carouselContainer.addEventListener("mouseenter", () => {
+      clearInterval(autoSlideInterval);
+    });
+
+    carouselContainer.addEventListener("mouseleave", () => {
+      autoSlideInterval = setInterval(nextSlide, 4000);
+    });
+  }
+
+  // Agregar soporte para navegación con flechas del teclado
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") {
+      nextSlide();
+      clearInterval(autoSlideInterval);
+      autoSlideInterval = setInterval(nextSlide, 4000);
+    } else if (e.key === "ArrowLeft") {
+      prevSlide();
+      clearInterval(autoSlideInterval);
+      autoSlideInterval = setInterval(nextSlide, 4000);
+    }
+  });
+
+  // Inicializar en el primer slide real sin transición
+  updateCarousel(false);
+}
+
 // Inicializar efectos cuando se carga la página (compatible con GitHub Pages)
 document.addEventListener("DOMContentLoaded", function () {
   // Pequeño delay para asegurar que todos los elementos estén cargados en GitHub Pages
-  setTimeout(function() {
+  setTimeout(function () {
     initParallaxEffect();
     initSmoothScrolling();
-    
+    initCarousel();
+
     // Debug para GitHub Pages - verificar que los elementos existan
-    console.log("Navigation links found:", document.querySelectorAll(".header__nav-link").length);
+    console.log(
+      "Navigation links found:",
+      document.querySelectorAll(".header__nav-link").length,
+    );
     console.log("Sections found:", {
       projects: !!document.querySelector("#projects"),
       techStack: !!document.querySelector("#tech__stack"),
       aboutMe: !!document.querySelector("#about__me"),
-      contact: !!document.querySelector("#contact")
+      contact: !!document.querySelector("#contact"),
     });
   }, 100);
 });
