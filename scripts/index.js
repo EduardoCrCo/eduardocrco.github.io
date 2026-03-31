@@ -16,7 +16,7 @@ function scrollToTop() {
 
   window.scrollTo({
     top: 0,
-    behavior: "smooth",
+    behavior: "smooth", // Cambiado a "smoothie" para evitar problemas de compatibilidad en GitHub Pages
   });
 }
 
@@ -92,7 +92,9 @@ window.addEventListener("scroll", function () {
 // Función para agregar scroll suave a todos los enlaces de navegación (compatible con GitHub Pages)
 function initSmoothScrolling() {
   // Seleccionar todos los enlaces de navegación
-  const navLinks = document.querySelectorAll(".header__nav-link");
+  const navLinks = document.querySelectorAll(
+    ".header__nav-link, .contact__email-link--href",
+  );
 
   navLinks.forEach((link) => {
     link.addEventListener("click", function (e) {

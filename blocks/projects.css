@@ -109,6 +109,8 @@
     #ffcc00 50%,
     transparent 50%
   );
+  background-color: rgba(187, 187, 187, 0.03);
+  backdrop-filter: blur(10px);
   background-size: 200% 100%;
   background-position: 100%;
   color: #ffcc00;
